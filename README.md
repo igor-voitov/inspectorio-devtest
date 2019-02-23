@@ -1,0 +1,1 @@
+# Inspectorio sample automation
