@@ -7,3 +7,4 @@
 /.vs
 /01-Infrastructure-Provisioning/terraform.exe
 /01-Infrastructure-Provisioning/.terraform/plugins/windows_amd64
+/01-Infrastructure-Provisioning/awscreds.tf
