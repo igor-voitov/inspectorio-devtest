@@ -5,3 +5,5 @@
 /.vs/slnx.sqlite
 /.vs/ProjectSettings.json
 /.vs
+/01-Infrastructure-Provisioning/terraform.exe
+/01-Infrastructure-Provisioning/.terraform/plugins/windows_amd64
