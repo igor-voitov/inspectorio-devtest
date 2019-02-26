@@ -11,4 +11,4 @@
 /01-Infrastructure-Provisioning/terraform-v2/terraform.*
 /01-Infrastructure-Provisioning/terraform-v2/.terraform/
 /01-Infrastructure-Provisioning/terraform-v2/private_key.pem
-
+/01-Infrastructure-Provisioning/terraform-v2/.terraform.tfstate.lock
