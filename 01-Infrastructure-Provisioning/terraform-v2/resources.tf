@@ -1,8 +1,8 @@
 #providers
 provider "aws" {
-	access_key = "${var.access_key}"
-	secret_key = "${var.secret_key}"
-	region = "${var.region}"
+    access_key = "${var.access_key}"
+    secret_key = "${var.secret_key}"
+    region = "${var.region}"
 }
 
 #resources
@@ -89,22 +89,25 @@ resource "aws_security_group" "sg" {
   }
 }
 
-
+# automatically generating private/public keys
 resource "tls_private_key" "example" {
   algorithm = "RSA"
   rsa_bits  = 4096
 }
 
+# to store private key to file
 resource "local_file" "pivate_key" {
   content  = "${tls_private_key.example.private_key_pem}"
   filename = "private_key.pem"
 }
 
+# to publish public key to VM
 resource "aws_key_pair" "generated_public_key" {
   key_name   = "public_key"
   public_key = "${tls_private_key.example.public_key_openssh}"
 }
 
+# VM 
 resource "aws_instance" "testInstance" {
   ami           = "${var.instance_ami}"
   instance_type = "${var.instance_type}"
@@ -112,7 +115,33 @@ resource "aws_instance" "testInstance" {
   vpc_security_group_ids = ["${aws_security_group.sg.id}"]
   key_name = "${aws_key_pair.generated_public_key.key_name}"
 
+  # setup python modules
+  provisioner "remote-exec" {
+        inline = [
+        "sudo yum install -y python-pip python-wheel",
+        "sudo yum upgrade -y python-setuptools",
+        "sudo yum groupinstall -y \"Development Tools\"",
+        "sudo yum install -y python-devel",
+        "pip install --user awscli python-vim python-nginx uwsgi pipenv"
+        ]
+    connection {
+        type        = "ssh"
+        host        = "${aws_instance.testInstance.public_ip}"
+        user        = "ec2-user"
+        private_key = "${tls_private_key.example.private_key_pem}"
+    }
+  }
   tags {
-		"Environment" = "${var.environment_tag}"
-	}
+        "Environment" = "${var.environment_tag}"
+    }
 }
+
+
+
+
+
+
+
+
+
+
