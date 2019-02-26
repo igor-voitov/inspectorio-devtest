@@ -10,4 +10,5 @@
 /01-Infrastructure-Provisioning/myplan
 /01-Infrastructure-Provisioning/terraform-v2/terraform.*
 /01-Infrastructure-Provisioning/terraform-v2/.terraform/
+/01-Infrastructure-Provisioning/terraform-v2/private_key.pem
 
