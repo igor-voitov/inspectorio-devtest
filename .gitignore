@@ -5,10 +5,9 @@
 /.vs/slnx.sqlite
 /.vs/ProjectSettings.json
 /.vs
-/01-Infrastructure-Provisioning/.terraform/
-/01-Infrastructure-Provisioning/terraform.*
-/01-Infrastructure-Provisioning/myplan
-/01-Infrastructure-Provisioning/terraform-v2/terraform.*
-/01-Infrastructure-Provisioning/terraform-v2/.terraform/
-/01-Infrastructure-Provisioning/terraform-v2/private_key.pem
-/01-Infrastructure-Provisioning/terraform-v2/.terraform.tfstate.lock
+myplan
+terraform.*
+.terraform/
+private_key.pem
+.terraform.tfstate.lock
+.terraform.tfstate.lock.info
