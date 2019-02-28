@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: mvc-service-helm
+  namespace: {{ .Values.namespace }}
+spec:
+  selector:
+    app: mvc
+  ports:
+  - protocol: TCP
+    port: {{ .Values.web.port }}
+    targetPort: {{ .Values.web.port }}
+  type: LoadBalancer
