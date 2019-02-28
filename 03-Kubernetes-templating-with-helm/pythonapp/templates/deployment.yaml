@@ -1,0 +1,34 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: deployment-helm
+  namespace: {{ .Values.namespace }}
+spec:
+  replicas: {{ .Values.web.image.replicaCount }}
+  template:
+    spec:
+      containers:
+      - name: pythonapp
+        image: {{ .Values.web.image.dockerHubId }}/{{ .Values.web.image.name }}:{{ .Values.web.image.tag }}
+        ports:
+        - containerPort: {{ .Values.web.port }}
+        resources:
+          limits:
+            cpu: "1"
+            memory: "200Mi"
+          requests:
+            cpu: "0.1"
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: mvc-service-helm
+  namespace: {{ .Values.namespace }}
+spec:
+  selector:
+    app: mvc
+  ports:
+  - protocol: TCP
+    port: {{ .Values.web.port }}
+    targetPort: {{ .Values.web.port }}
+  type: LoadBalancer

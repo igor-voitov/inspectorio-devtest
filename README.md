@@ -1,2 +1,1 @@
 # Inspectorio sample automation
-# readme 
