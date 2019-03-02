@@ -26,9 +26,17 @@ spec:
           limits:
             cpu: 500m
             memory: 256Mi
-        env:
-        - name: TEST
-          value: "test"
+          env:          
+          - name: "USERNAME"
+            valueFrom:
+              secretKeyRef:
+                key:  username
+                name: {{ .Release.Name }}-auth
+          - name: "PASSWORD"
+            valueFrom:
+              secretKeyRef:
+                key:  password
+                name: {{ .Release.Name }}-auth
 ---
 apiVersion: v1
 kind: Service
