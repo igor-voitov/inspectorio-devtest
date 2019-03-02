@@ -1,4 +1,4 @@
-# Default values for samplechart.
+# Default values for aws-checker.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
@@ -21,7 +21,7 @@ ingress:
   annotations: {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
-  path: /
+  paths: []
   hosts:
     - chart-example.local
   tls: []
