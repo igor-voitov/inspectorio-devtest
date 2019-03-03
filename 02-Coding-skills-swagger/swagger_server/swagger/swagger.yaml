@@ -1,0 +1,63 @@
+---
+swagger: "2.0"
+info:
+  description: "List all AWS EC2 instance with match State"
+  version: "1.0.0"
+  title: "Inspectorio DevOps Assignment API"
+  contact:
+    email: "devops@inspectorio.com"
+paths:
+  /healthz:
+    get:
+      summary: "Health Check"
+      description: "The healthcheck endpoint provides detailed information about the\
+        \ health of a service."
+      operationId: "healthz_get"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "Health Check report"
+          examples:
+            application/json:
+              status: "OK"
+        503:
+          description: "Unhealthy Service"
+          examples:
+            application/json:
+              status: "SOS"
+      x-swagger-router-controller: "swagger_server.controllers.default_controller"
+  /ec2:
+    post:
+      summary: "List AWS EC2 instances"
+      description: "Get all EC2 instances in one region with match state"
+      operationId: "get_ec2_instances"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "AwsInfo"
+        description: "Request body"
+        required: false
+        schema:
+          $ref: "#/definitions/AwsInfo"
+      responses:
+        200:
+          description: "json array contain EC2 instances"
+      x-swagger-router-controller: "swagger_server.controllers.default_controller"
+definitions:
+  AwsInfo:
+    type: "object"
+    properties:
+      region:
+        type: "string"
+        example: "us-east-1"
+      state:
+        type: "string"
+        example: "Running"
+    example:
+      state: "Running"
+      region: "us-east-1"
