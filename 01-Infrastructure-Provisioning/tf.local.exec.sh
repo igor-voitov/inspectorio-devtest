@@ -1,0 +1,1 @@
+terraform plan -out "planfile" -var 'access=value' -var 'secret=value'
