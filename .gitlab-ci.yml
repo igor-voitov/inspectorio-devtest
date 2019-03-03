@@ -12,6 +12,10 @@ before_script:
   - echo $AWS_SECRET_KEY
   - terraform init
 
+cache:
+  paths:
+    - .terraform
+
 stages:
   - validate
   - plan
