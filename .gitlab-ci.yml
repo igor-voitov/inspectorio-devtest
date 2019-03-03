@@ -25,7 +25,7 @@ validate:
 plan:
   stage: plan
   script:
-    - terraform plan -out "planfile" -var 'access=$AWS_ACCESS_KEY' -var 'secret=$AWS_SECRET_KEY'
+    - terraform plan -out "planfile" -var "access=$($AWS_ACCESS_KEY)" -var "secret=$($AWS_SECRET_KEY)"
   dependencies:
     - validate
   artifacts:
