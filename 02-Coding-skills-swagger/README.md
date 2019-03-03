@@ -36,15 +36,3 @@ sudo pip install tox
 tox
 ```
 
-## Running with Docker
-
-To run the server on a Docker container, please execute the following from the root directory:
-
-```bash
-# building the image
-docker build -t igorvoitov/swagger_server:latest .
-docker build -t devtest01registry01/swagger_server:latest .
-
-# starting up a container
-docker run -p 8080:8080 igorvoitov/swagger_server:latest
-```

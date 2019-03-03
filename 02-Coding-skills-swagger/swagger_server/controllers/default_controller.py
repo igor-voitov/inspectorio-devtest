@@ -29,9 +29,10 @@ def healthz_get():  # noqa: E501
 
     :rtype: None
     """
-    EnvVar1 = os.environ.get('HOMEPATH')
-    if EnvVar1 != 'None':
-        return {'EnvVar1': EnvVar1}, 200
+    AWS_ACCOUNT_ID = os.environ.get('AWS_ACCOUNT_ID')
+    AWS_ACCESS_KEY = os.environ.get('AWS_ACCESS_KEY')
+    AWS_SECRET_KEY = os.environ.get('AWS_SECRET_KEY')
+    if AWS_ACCOUNT_ID is not None:
+        return {"AWS_ACCOUNT_ID": AWS_ACCOUNT_ID}, 200
     else:
-        print("Please set the environment variable")
-        return {'EnvVar1': EnvVar1}, 503
+        return {"AWS_ACCOUNT_ID": AWS_ACCOUNT_ID}, 503

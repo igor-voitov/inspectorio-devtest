@@ -2,5 +2,6 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-username: root
-password: password
+AWS_ACCOUNT_ID: QVdTX0FDQ09VTlRfSUQ=
+AWS_ACCESS_KEY: QVdTX0FDQ0VTU19LRVk=
+AWS_SECRET_KEY: QVdTX1NFQ1JFVF9LRVk=

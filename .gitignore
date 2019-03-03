@@ -189,3 +189,5 @@ target/
 
 #Ipython Notebook
 .ipynb_checkpoints
+
+docker.exec.local.sh

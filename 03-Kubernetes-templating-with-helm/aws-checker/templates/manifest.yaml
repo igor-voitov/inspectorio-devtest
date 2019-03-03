@@ -1,7 +1,7 @@
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: pythonapp
+  name: aws-checker
 spec:
   replicas: 1
   strategy:
@@ -12,13 +12,13 @@ spec:
   template:
     metadata:
       labels:
-        app: pythonapp
+        app: aws-checker
     spec:
       containers:
-      - name: pythonapp
-        image: devtest01registry01.azurecr.io/02-coding-skills:latest
+      - name: aws-checker
+        image: devtest01registry01.azurecr.io/swagger_server:latest
         ports:
-        - containerPort: 5000
+        - containerPort: 8080
         resources:
           requests:
             cpu: 250m
@@ -27,16 +27,22 @@ spec:
             cpu: 500m
             memory: 256Mi
           env:          
-          - name: "USERNAME"
+          - name: "AWS_ACCOUNT_ID"
             valueFrom:
               secretKeyRef:
-                key:  username
+                key:  AWS_ACCOUNT_ID
                 name: {{ .Release.Name }}-auth
-          - name: "PASSWORD"
+          - name: "AWS_ACCESS_KEY"
             valueFrom:
               secretKeyRef:
-                key:  password
+                key:  AWS_ACCESS_KEY
                 name: {{ .Release.Name }}-auth
+          - name: "AWS_SECRET_KEY"
+            valueFrom:
+              secretKeyRef:
+                key:  AWS_SECRET_KEY
+                name: {{ .Release.Name }}-auth
+
 ---
 apiVersion: v1
 kind: Service
@@ -47,7 +53,7 @@ spec:
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 5000
+      targetPort: 8080
       name: http
   selector:
-    app: pythonapp
+    app: aws-checker
