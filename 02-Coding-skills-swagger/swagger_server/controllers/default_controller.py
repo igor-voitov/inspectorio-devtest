@@ -1,5 +1,6 @@
 import connexion
 import six
+import os
 
 from swagger_server.models.aws_info import AwsInfo  # noqa: E501
 from swagger_server import util
@@ -28,4 +29,9 @@ def healthz_get():  # noqa: E501
 
     :rtype: None
     """
-    return 'do some magic!'
+    EnvVar1 = os.environ.get('HOMEPATH')
+    if EnvVar1 != 'None':
+        return {'EnvVar1': EnvVar1}, 200
+    else:
+        print("Please set the environment variable")
+        return {'EnvVar1': EnvVar1}, 503
