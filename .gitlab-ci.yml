@@ -8,6 +8,8 @@ before_script:
   - cd ./01-Infrastructure-Provisioning
   - rm -rf .terraform
   - terraform --version
+  - echo $AWS_ACCESS_KEY
+  - echo $AWS_SECRET_KEY
   - terraform init
 
 stages:

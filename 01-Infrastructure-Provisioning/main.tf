@@ -1,5 +1,9 @@
-variable "AWS_ACCESS_KEY" {}
-variable "AWS_SECRET_KEY" {}
+variable "AWS_ACCESS_KEY" {
+  default = "$AWS_ACCESS_KEY"
+}
+variable "AWS_SECRET_KEY" {
+  default = "$AWS_SECRET_KEY"
+}
 
 
 module "terraform-aws-vpc-ec2" {
