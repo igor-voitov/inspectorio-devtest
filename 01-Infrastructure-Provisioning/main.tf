@@ -1,7 +1,7 @@
-variable "access_key" {
+variable "access" {
   default = "$AWS_ACCESS_KEY"
 }
-variable "secret_key" {
+variable "secret" {
   default = "$AWS_SECRET_KEY"
 }
 
@@ -9,8 +9,8 @@ variable "secret_key" {
 module "terraform-aws-vpc-ec2" {
   source = "./terraform-aws-vpc-ec2"
 
-access_key = "${var.access_key}"
-secret_key = "${var.secret_key}"
+access_key = "${var.access}"
+secret_key = "${var.secret}"
 
 
 }
