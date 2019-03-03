@@ -23,7 +23,7 @@ parser.add_argument('task')
 
 
 
-mystatus = "nodrm"
+mystatus = "test"
 
 
 # heathz
