@@ -1,5 +1,5 @@
 # Overview
-This repo contains sample automation scenario based on **`Terraform`**, **`Python`** API app (utilizing `Connexion` spec-first framework based on **`Flask`**), `Docker`, `Azure Container Registry` / `Docker Hub` as image repo, **`Kubernetes`** as deployment target/platform, **`Helm charts`** as packaging approach, `Azure Container Registry` as Helm charts repo.
+This repo contains sample automation scenario based on **`Terraform`**, **`Python`** API app (utilizing `Connexion` spec-first framework based on **`Flask`**), `Docker`, **`Kubernetes`** as deployment target, **`Helm charts`** as packaging approach.
 **`GitLab`** CI/CD utilized for automation.
 
 Sample deployment on `Azure Kubernetes Service`: [SwaggerUI](http://40.68.206.101/ui/)
@@ -14,11 +14,11 @@ Module generates both public and private keys to connect to your EC2 instance
 
 ### Prerequesites:
 - Terraform binary avaliable in path, tested on Terraform v0.11.11
-- AWS account, AWS access key ID and secret access key
+- AWS account, AWS access key and secret key
 - AWS access key ID and secret access key in Environment variables:
 
 ```bash
-  export AWS_ACCESS_KEY=yourkey #coment
+  export AWS_ACCESS_KEY=yourkey
   export AWS_SECRET_KEY=yourkey
 ```
 ### How-to:
