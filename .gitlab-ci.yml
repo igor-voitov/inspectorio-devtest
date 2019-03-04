@@ -31,7 +31,7 @@ plan:
     - validate
   artifacts:
     paths:
-      - planfile
+      - ./01-Infrastructure-Provisioning/planfile
 
 apply:
   stage: apply
