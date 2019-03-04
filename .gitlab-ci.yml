@@ -10,7 +10,7 @@ variables:
 
 build-image:
   stage: build
-  image: docker:stable
+  image: docker:latest
   services:
   - docker:dind
   script:
@@ -28,5 +28,4 @@ deploy-helm:
   script:
     - echo "empty job"
 #    - helm init --upgrade
-#    - helm repo add stable https://kubernetes-charts.storage.googleapis.com
-#    - helm upgrade --install  php-app --namespace default --wait --set image.tag=${CI_PIPELINE_ID} --set replicaCount=2 helm-data/
+#    - helm upgrade --install aws-checker --namespace default --wait aws-checker/ --set image.tag=${CI_PIPELINE_ID} 
