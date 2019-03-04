@@ -1,18 +1,16 @@
 # Overview
-This repo contains sample automation scenario based on `Terraform`, `Python` API app (utilizing `Connexion` spec-first framework ), `Docker`, `Azure Container Registry` / `Docker Hub` as image repo, `Kubernetes` as deployment target/platform, `Helm chart` as packaging approach, `Azure Container Registry` as Helm charts repo.
-`GitLab` CI/CD utilized for automation.
-You can find each phase under corresponsing folder.
+This repo contains sample automation scenario based on **`Terraform`**, **`Python`** API app (utilizing `Connexion` spec-first framework based on **`Flask`**), `Docker`, `Azure Container Registry` / `Docker Hub` as image repo, **`Kubernetes`** as deployment target/platform, **`Helm charts`** as packaging approach, `Azure Container Registry` as Helm charts repo.
+**`GitLab`** CI/CD utilized for automation.
 
-Browse to sample deployment on `Azure Kubernetes Service`:
-
-[SwaggerUI](http://40.68.206.101/ui/)
+Sample deployment on `Azure Kubernetes Service`: [SwaggerUI](http://40.68.206.101/ui/)
 
 # Quick start (manually)
 
 ## 01-Infrastructure-Provisioning
 This folder contains `Terraform` module which provisions EC2 instance in separate VPCfor AWS provider.
 AWS access key ID and secret access key required for AWS auth.
-EC2
+Terraform configuration organized as module in `terraform-aws-vpc-ec2` 
+Module generates both public and private keys to connect to your EC2 instance
 
 ### Prerequesites:
 - Terraform binary avaliable in path, tested on Terraform v0.11.11
@@ -20,9 +18,15 @@ EC2
 - AWS access key ID and secret access key in Environment variables:
 
 ```bash
-  export AWS_ACCESS_KEY=yourkey
+  export AWS_ACCESS_KEY=yourkey #coment
   export AWS_SECRET_KEY=yourkey
 ```
+### How-to:
+```bash
+  terraform init
+  terraform plan -out "planfile" -var "access=$AWS_ACCESS_KEY" -var "secret=$AWS_SECRET_KEY"
+```
+
 
 ## 02-Coding-skills-swagger
 
