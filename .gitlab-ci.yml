@@ -14,7 +14,6 @@ before_script:
 
 cache:
   paths:
-    - ./01-Infrastructure-Provisioning/terraform.tfstate
     - ./01-Infrastructure-Provisioning/planfile
   key: "$CI_BUILD_REPO"
 
@@ -32,7 +31,7 @@ plan:
   stage: plan
   script:
     - terraform plan -out "planfile" -var "access=$AWS_ACCESS_KEY" -var "secret=$AWS_SECRET_KEY"
-    - ls -l
+    - ls -R -l
   dependencies:
     - validate
 #  artifacts:
@@ -46,3 +45,7 @@ apply:
   dependencies:
     - plan
   when: manual
+  artifacts:
+    paths:
+      - ./01-Infrastructure-Provisioning/private_key.pem
+  
