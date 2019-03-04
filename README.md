@@ -25,13 +25,33 @@ Module generates both public and private keys to connect to your EC2 instance
 ```bash
   terraform init
   terraform plan -out "planfile" -var "access=$AWS_ACCESS_KEY" -var "secret=$AWS_SECRET_KEY"
+  terraform apply "planfile"
 ```
 
 
 ## 02-Coding-skills-swagger
 
+To run the server on a local Docker container, please execute the following from the folder root directory:
+
+```bash
+  # building the image
+  docker build -t swagger_server:latest .
+
+  docker run \
+  -e AWS_ACCOUNT_ID=myAWSacc \
+  -e AWS_ACCESS_KEY=myAWSaccesskey \
+  -e AWS_SECRET_KEY=myAWSsecretkey \
+  --name=swagger-server -it --rm -p 8080:8080 swagger_server:latest
+```
+
 ## 03-Kubernetes-templating-with-helm
 
+To install from local folder, execute the following from the folder root directory: 
+
+```bash
+  helm install aws-checker --name aws-checker --wait
+  kubectl get svc load-balancer
+```
 
 
 # Qucik start (GitLab CI)
