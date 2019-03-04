@@ -12,6 +12,12 @@ before_script:
   - rm -rf .terraform
   - terraform init
 
+cache:
+  paths:
+    - ./01-Infrastructure-Provisioning/terraform.tfstate
+    - ./01-Infrastructure-Provisioning/planfile
+  key: "$CI_BUILD_REPO"
+
 stages:
   - validate
   - plan
@@ -29,9 +35,9 @@ plan:
     - ls -l
   dependencies:
     - validate
-  artifacts:
-    paths:
-      - ./01-Infrastructure-Provisioning/planfile
+#  artifacts:
+#    paths:
+#      - ./01-Infrastructure-Provisioning/planfile
 
 apply:
   stage: apply
