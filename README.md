@@ -5,7 +5,7 @@ This repo contains sample automation scenario based on **`Terraform`**, **`Pytho
 Sample deployment on `Azure Kubernetes Service`: [SwaggerUI](http://40.68.206.101/ui/)
 
 
-# Qucik start (GitLab CI)
+# Quick start (GitLab CI)
 
 ### Prerequesites
 In the GitLab UI, navigate to Settings > CI/CD and expand the Variables section
