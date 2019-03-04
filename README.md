@@ -56,7 +56,11 @@ To install from local folder, execute the following from the folder root directo
 
 # Qucik start (GitLab CI)
 In the GitLab UI, navigate to Settings > CI/CD and expand the Variables section
-Create 3 variables:
+
+Add 3 variables:
+```
 AWS_ACCOUNT_ID
 AWS_ACCESS_KEY
 AWS_SECRET_KEY
+```
+
