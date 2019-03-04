@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: aws-checker
-        image: devtest01registry01.azurecr.io/swagger_server:latest
+        image: igorvoitov/swagger_server:latest
         ports:
         - containerPort: 8080
         resources:
