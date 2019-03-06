@@ -5,7 +5,7 @@ stages:
 variables:
   CONTAINER_IMAGE: igorvoitov/swagger_server
   CONTAINER_IMAGE_LATEST: ${CONTAINER_IMAGE}:${CI_PIPELINE_ID}
-  DOCKER_DRIVER: overlay2
+  DOCKER_DRIVER: overlay
   DOCKER_HOST: tcp://localhost:2375
 
 build-image:
