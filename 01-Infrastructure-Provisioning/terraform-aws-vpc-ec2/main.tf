@@ -82,7 +82,7 @@ resource "aws_security_group" "sg" {
 }
 
 # generate private/public keys
-resource "tls_private_key" "example" {
+resource "tls_private_key" "key" {
   algorithm = "RSA"
   rsa_bits  = 4096
 }
@@ -94,7 +94,7 @@ resource "local_file" "pivate_key" {
 }
 
 # publish public key to VM
-resource "aws_key_pair" "generated_public_key" {
+resource "aws_key_pair" "generated_keypair" {
   key_name   = "public_key"
   public_key = "${tls_private_key.example.public_key_openssh}"
 }

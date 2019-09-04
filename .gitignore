@@ -11,7 +11,7 @@ terraform.*
 private_key.pem
 .terraform.tfstate.lock
 .terraform.tfstate.lock.info
-
+planfile
 
 #### From Flask-sample
 
