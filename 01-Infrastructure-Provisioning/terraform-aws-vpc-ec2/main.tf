@@ -34,12 +34,10 @@ resource "aws_subnet" "subnet_public" {
 
 resource "aws_route_table" "rtb_public" {
   vpc_id = "${aws_vpc.vpc.id}"
-
   route {
       cidr_block = "0.0.0.0/0"
       gateway_id = "${aws_internet_gateway.igw.id}"
   }
-
   tags = {
     "Environment" = "${var.environment_tag}"
   }
@@ -53,7 +51,6 @@ resource "aws_route_table_association" "rta_subnet_public" {
 resource "aws_security_group" "sg" {
   name = "sg"
   vpc_id = "${aws_vpc.vpc.id}"
-
   # SSH access from the VPC and other
   ingress {
       from_port   = 22
@@ -61,47 +58,42 @@ resource "aws_security_group" "sg" {
       protocol    = "tcp"
       cidr_blocks = ["0.0.0.0/0"]
   }
-
   ingress {
     from_port = 80
     to_port = 80
     protocol = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
-
   ingress {
     from_port = 443
     to_port = 443
     protocol = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
-
-  
   egress {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-
   tags = {
     "Environment" = "${var.environment_tag}"
   }
 }
 
-# automatically generating private/public keys
+# generate private/public keys
 resource "tls_private_key" "example" {
   algorithm = "RSA"
   rsa_bits  = 4096
 }
 
-# to store private key to file
+# store private key to file
 resource "local_file" "pivate_key" {
   content  = "${tls_private_key.example.private_key_pem}"
   filename = "private_key.pem"
 }
 
-# to publish public key to VM
+# publish public key to VM
 resource "aws_key_pair" "generated_public_key" {
   key_name   = "public_key"
   public_key = "${tls_private_key.example.public_key_openssh}"
