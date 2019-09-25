@@ -27,5 +27,5 @@ deploy-helm:
   image: linkyard/docker-helm
   script:
     - echo "empty job"
-#    - helm init --upgrade
+#    - helm init --upgradee
 #    - helm upgrade --install aws-checker --namespace default --wait aws-checker/ --set image.tag=${CI_PIPELINE_ID} 
